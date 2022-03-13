@@ -14,6 +14,9 @@
 # environment
 .env
 
+# husky
+.husky
+
 # misc
 .DS_Store
 .env.local
