@@ -9,8 +9,10 @@ import {
   Paper,
   Typography,
   useMediaQuery,
+  Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import ResizableTableHeader from "./episodesTableHeaderComponent";
 
 interface IShowEpisodesTable {
   season?: number;
@@ -21,32 +23,8 @@ interface IEpisodeItem {
   id: number;
   name: string;
   summary: string;
+  date: string;
 }
-
-interface IResizableTableHeader {
-  isMobile: boolean;
-}
-
-const ResizableTableHeader: React.FC<IResizableTableHeader> = ({
-  isMobile,
-}) => {
-  if (isMobile) {
-    return (
-      <TableRow>
-        <TableCell>Name</TableCell>
-        <TableCell>Action</TableCell>
-      </TableRow>
-    );
-  }
-  return (
-    <TableRow>
-      <TableCell>Number</TableCell>
-      <TableCell>Date</TableCell>
-      <TableCell>Name</TableCell>
-      <TableCell>Action</TableCell>
-    </TableRow>
-  );
-};
 
 const ShowEpisodesTable: React.FC<IShowEpisodesTable> = () => {
   const isMobile: boolean = useMediaQuery("(max-width:800px)");
@@ -70,15 +48,25 @@ const ShowEpisodesTable: React.FC<IShowEpisodesTable> = () => {
               // key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                15
-              </TableCell>
-              <TableCell scope="row">Aug 20, 2004</TableCell>
+              {isMobile ? (
+                ""
+              ) : (
+                <>
+                  <TableCell component="th" scope="row">
+                    15
+                  </TableCell>
+                  <TableCell scope="row">Aug 20, 2004</TableCell>
+                </>
+              )}
               <TableCell scope="row">
                 Crazy Mixed Up Puffs / Mizzen in Action
               </TableCell>
               <TableCell scope="row">
-                <Link to="/12/episode">Details</Link>
+                <Button variant="outlined">
+                  <Link style={{ textDecoration: "none" }} to="/12/episode">
+                    Details
+                  </Link>
+                </Button>
               </TableCell>
             </TableRow>
           </TableBody>

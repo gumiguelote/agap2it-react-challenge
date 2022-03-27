@@ -2,13 +2,15 @@ import * as React from "react";
 import {
   Box,
   Breadcrumbs,
+  Button,
   Card,
   CardContent,
   CardMedia,
-  Link,
+  Link as LinkMaterial,
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 interface IEpisodeDetailsCard {
   id?: number;
@@ -24,16 +26,16 @@ const EpisodeDetailsCard: React.FC<IEpisodeDetailsCard> = () => {
   return (
     <>
       <Breadcrumbs sx={{ mb: 2 }} aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
+        <LinkMaterial underline="hover" color="inherit" href="/">
           THE POWERPUFF GIRLS
-        </Link>
-        <Link
+        </LinkMaterial>
+        <LinkMaterial
           underline="hover"
           color="inherit"
           href="/getting-started/installation/"
         >
           Episodes
-        </Link>
+        </LinkMaterial>
         <Typography color="text.primary">
           CRAZY MIXED UP PUFFS / MIZZEN IN ACTION
         </Typography>
@@ -79,6 +81,11 @@ const EpisodeDetailsCard: React.FC<IEpisodeDetailsCard> = () => {
           </CardContent>
         </Box>
       </Card>
+      <Link style={{ textDecoration: "none" }} to="/">
+        <Button sx={{ mt: 2 }} color="info" size="medium" variant="outlined">
+          Back to List
+        </Button>
+      </Link>
     </>
   );
 };

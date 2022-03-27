@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ShowEpisodesTable from "./ShowEpisodesTableComponent";
+import ShowEpisodesTable from "./episodesTable/ShowEpisodesTableComponent";
 
 interface IShowEpisodesCard {
   episodes?: [];
