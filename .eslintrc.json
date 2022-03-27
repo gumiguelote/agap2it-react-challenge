@@ -28,6 +28,7 @@
       }
     ],
     "arrow-body-style": "off",
+    "react/no-unescaped-entities": "off",
     "react/function-component-definition": "off",
     "quotes": [
       "warn",

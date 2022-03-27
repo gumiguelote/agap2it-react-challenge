@@ -1,13 +1,17 @@
 import React from "react";
+import { Container, CssBaseline } from "@mui/material";
+import Header from "../common/header/Header";
 import Router from "../routes";
-import "./App.css";
 
 const App: React.FC = () => {
   return (
-    <div>
-      <header>Header</header>
-      <Router />
-    </div>
+    <>
+      <Header />
+      <CssBaseline />
+      <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
+        <Router />
+      </Container>
+    </>
   );
 };
 
