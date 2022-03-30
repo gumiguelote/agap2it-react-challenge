@@ -6,39 +6,28 @@ import {
   Card,
   CardContent,
   CardMedia,
-  Link as LinkMaterial,
   Typography,
   useMediaQuery,
+  Link as LinkMaterial,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { IEpisodeDetail } from "../../interface/episodes.interface";
+import { removeTagsFromString } from "../../helpers/string.helper";
 
-interface IEpisodeDetailsCard {
-  id?: number;
-  name?: string;
-  summary?: string;
-  image?: string;
-  rating?: number;
+interface IEpisodeDetailsProps {
+  episode: IEpisodeDetail;
 }
 
-const EpisodeDetailsCard: React.FC<IEpisodeDetailsCard> = () => {
+const EpisodeDetailsCard: React.FC<IEpisodeDetailsProps> = ({ episode }) => {
   const isMobile: boolean = useMediaQuery("(max-width:800px)");
 
   return (
     <>
       <Breadcrumbs sx={{ mb: 2 }} aria-label="breadcrumb">
         <LinkMaterial underline="hover" color="inherit" href="/">
-          THE POWERPUFF GIRLS
+          {episode.name}
         </LinkMaterial>
-        <LinkMaterial
-          underline="hover"
-          color="inherit"
-          href="/getting-started/installation/"
-        >
-          Episodes
-        </LinkMaterial>
-        <Typography color="text.primary">
-          CRAZY MIXED UP PUFFS / MIZZEN IN ACTION
-        </Typography>
+        <Typography color="text.primary">{episode.name}</Typography>
       </Breadcrumbs>
       <Card
         raised
@@ -56,7 +45,7 @@ const EpisodeDetailsCard: React.FC<IEpisodeDetailsCard> = () => {
         >
           <CardMedia
             component="img"
-            image="https://static.tvmaze.com/uploads/images/large_landscape/238/596382.jpg"
+            image={episode.image.original}
             // ToDo change alt to the name of the episode
             alt=""
             sx={{
@@ -67,16 +56,14 @@ const EpisodeDetailsCard: React.FC<IEpisodeDetailsCard> = () => {
           />
           <CardContent sx={{ flex: "1 0 auto" }}>
             <Typography component="h1" variant="h5">
-              Crazy Mixed Up Puffs / Mizzen in Action
+              {episode.name}
             </Typography>
             <Typography
               variant="subtitle2"
               color="text.secondary"
               component="h2"
             >
-              "Crazy Mixed Up Puffs" The girls must literally work as one to try
-              and stop Mojo from destroying Townsville. "Mizzen in Action"
-              Captain Crack McGraigen and his crew are tossed forward in time.
+              {removeTagsFromString(episode.summary)}
             </Typography>
           </CardContent>
         </Box>

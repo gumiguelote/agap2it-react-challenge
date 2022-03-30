@@ -28,7 +28,9 @@
       }
     ],
     "arrow-body-style": "off",
+    "object-curly-newline": "off",
     "react/no-unescaped-entities": "off",
+    "no-param-reassign": "off",
     "react/function-component-definition": "off",
     "quotes": [
       "warn",
