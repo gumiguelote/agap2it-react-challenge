@@ -5,12 +5,9 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ShowEpisodesTable from "./episodesTable/ShowEpisodesTableComponent";
+import { ISeasonEpisodes } from "../interface/episodes.interface";
 
-interface IShowEpisodesCard {
-  episodes?: [];
-}
-
-const ShowEpisodesCard: React.FC<IShowEpisodesCard> = () => {
+const ShowEpisodesCard: React.FC<ISeasonEpisodes> = ({ seasons }) => {
   const isMobile: boolean = useMediaQuery("(max-width:800px)");
 
   return (
@@ -29,7 +26,7 @@ const ShowEpisodesCard: React.FC<IShowEpisodesCard> = () => {
             Episodes
           </Typography>
           <Divider sx={{ mb: 4 }} />
-          <ShowEpisodesTable />
+          <ShowEpisodesTable seasons={seasons} />
         </CardContent>
       </Box>
     </Card>
