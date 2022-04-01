@@ -1,5 +1,6 @@
-import { IEpisodeDetail, IEpisodes } from "../interface/episodes.interface";
-import { IShow } from "../interface/shows.interface";
+import { IEpisodeDetails } from "../interface/episodeDetails.interface";
+import { IEpisode } from "../interface/episodes.interface";
+import { IShow } from "../interface/show.interface";
 import api from "./api.service";
 
 export const getShow = async (id: string): Promise<IShow> => {
@@ -7,13 +8,14 @@ export const getShow = async (id: string): Promise<IShow> => {
   return data;
 };
 
-export const getEpisodes = async (id: string): Promise<IEpisodes[]> => {
-  const { data } = await api.get<IEpisodes[]>(`/shows/${id}/episodes`);
+export const getEpisodes = async (id: string): Promise<IEpisode[]> => {
+  const { data } = await api.get<IEpisode[]>(`/shows/${id}/episodes`);
   return data;
 };
 
-export const getEpisodeDetail = async (id: string): Promise<IEpisodeDetail> => {
-  const { data } = await api.get<IEpisodeDetail>(`/episodes/${id}`);
-  console.log(data);
+export const getEpisodeDetail = async (
+  id: string,
+): Promise<IEpisodeDetails> => {
+  const { data } = await api.get<IEpisodeDetails>(`/episodes/${id}`);
   return data;
 };

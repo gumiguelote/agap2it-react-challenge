@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { IShow } from "../interface/shows.interface";
+import { IShow } from "../interface/show.interface";
 import { removeTagsFromString } from "../helpers/string.helper";
 
 interface IShowProps {
@@ -28,7 +28,7 @@ const ShowCard: React.FC<IShowProps> = ({ showProps }) => {
     >
       <CardMedia
         component="img"
-        image={showProps.image?.original}
+        image={showProps.image?.medium}
         alt={showProps.name}
         sx={{ objectFit: "fill", width: 240 }}
       />

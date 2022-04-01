@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import ResizableTableHeader from "./EpisodesTableHeaderComponent";
-import { ISeasonEpisodes } from "../../interface/episodes.interface";
+import { IEpisode, ISeasonEpisodes } from "../../interface/episodes.interface";
 import { dateFormatToIUHelper } from "../../helpers/date.helper";
 
 const ShowEpisodesTable: React.FC<ISeasonEpisodes> = ({ seasons }) => {
@@ -22,10 +22,10 @@ const ShowEpisodesTable: React.FC<ISeasonEpisodes> = ({ seasons }) => {
 
   return (
     <Box sx={{ maxHeight: 600, overflow: "overlay" }}>
-      {seasons.map((episodes, index, array) => (
-        <Box sx={{ mb: 4 }} key={`${array[index + 1]}`}>
+      {Object.keys(seasons).map((season) => (
+        <Box sx={{ mb: 4 }} key={season}>
           <Typography component="h5" variant="h6">
-            {`Season ${index}`}
+            {`Season ${season}`}
           </Typography>
           <TableContainer component={Paper} sx={{ mt: 2 }}>
             <Table
@@ -37,27 +37,27 @@ const ShowEpisodesTable: React.FC<ISeasonEpisodes> = ({ seasons }) => {
                 <ResizableTableHeader isMobile={isMobile} />
               </TableHead>
               <TableBody>
-                {episodes?.map((item) => (
+                {seasons[season]?.map((episode: IEpisode) => (
                   <TableRow
-                    key={item.id + 1}
+                    key={episode.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     {isMobile ? null : (
                       <>
                         <TableCell component="th" scope="row">
-                          {item.id}
+                          {episode.id}
                         </TableCell>
                         <TableCell scope="row">
-                          {dateFormatToIUHelper(item.airdate)}
+                          {dateFormatToIUHelper(episode.airdate)}
                         </TableCell>
                       </>
                     )}
-                    <TableCell scope="row">{item.name}</TableCell>
+                    <TableCell scope="row">{episode.name}</TableCell>
                     <TableCell scope="row">
                       <Button variant="outlined">
                         <Link
                           style={{ textDecoration: "none" }}
-                          to={`/${item.id}/episode`}
+                          to={`/${episode.id}/episode`}
                         >
                           Details
                         </Link>

@@ -11,11 +11,11 @@ import {
   Link as LinkMaterial,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { IEpisodeDetail } from "../../interface/episodes.interface";
 import { removeTagsFromString } from "../../helpers/string.helper";
+import { IEpisodeDetails } from "../../interface/episodeDetails.interface";
 
 interface IEpisodeDetailsProps {
-  episode: IEpisodeDetail;
+  episode: IEpisodeDetails;
 }
 
 const EpisodeDetailsCard: React.FC<IEpisodeDetailsProps> = ({ episode }) => {
@@ -45,7 +45,7 @@ const EpisodeDetailsCard: React.FC<IEpisodeDetailsProps> = ({ episode }) => {
         >
           <CardMedia
             component="img"
-            image={episode.image.original}
+            image={episode.image.medium}
             // ToDo change alt to the name of the episode
             alt=""
             sx={{
