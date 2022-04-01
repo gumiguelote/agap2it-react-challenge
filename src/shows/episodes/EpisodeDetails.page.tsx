@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IEpisodeDetail } from "../../interface/episodes.interface";
+import { IEpisodeDetails } from "../../interface/episodeDetails.interface";
 import { getEpisodeDetail } from "../../service/endpoints.service";
-import EpisodeDetailsCard from "./EpisodeDetailsCardComponent";
+import EpisodeDetailsCard from "./EpisodeDetailsCard.component";
 
-// interface IEpisodeDetailsPageProps {}
+// interface IEpisodeDetailssPageProps {}
 
-const initialState: IEpisodeDetail = {
+const initialState: IEpisodeDetails = {
   name: "",
   summary: "",
   image: {
-    original: "",
+    medium: "",
   },
 };
 
 const EpisodeDetailsPage: React.FC = () => {
   const { id } = useParams();
-  const [episode, setEpisode] = useState<IEpisodeDetail>(initialState);
+  const [episode, setEpisode] = useState<IEpisodeDetails>(initialState);
 
   useEffect(() => {
     const fetchEpisodeDetails = async (episodeId: string): Promise<void> => {

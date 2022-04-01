@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import NotFoundPage from "./common/pages/NotFoundPage";
-import ShowDetailsPage from "./shows/ShowDetailsPage";
+import ShowDetailsPage from "./shows/ShowDetails.page";
 
 // pages import
-import EpisodeDetailsPage from "./shows/episodes/EpisodeDetailsPage";
+import EpisodeDetailsPage from "./shows/episodes/EpisodeDetails.page";
 
 const Router: React.FC = () => {
   return (

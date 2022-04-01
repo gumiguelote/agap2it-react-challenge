@@ -31,6 +31,8 @@
     "object-curly-newline": "off",
     "react/no-unescaped-entities": "off",
     "no-param-reassign": "off",
+    "no-explicit-any": "off",
+    "default-param-last": "off",
     "react/function-component-definition": "off",
     "quotes": [
       "warn",

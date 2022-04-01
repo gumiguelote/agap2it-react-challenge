@@ -1,6 +1,6 @@
 import { IImage } from "./image.interface";
 
-export interface IEpisodes {
+export interface IEpisode {
   id: number;
   name: string;
   season: string;
@@ -8,13 +8,6 @@ export interface IEpisodes {
   sumamary: string;
   airdate: string;
 }
-
-export interface IEpisodeDetail {
-  name: string;
-  summary: string;
-  image: IImage;
-}
-
 export interface ISeasonEpisodes {
-  seasons: Array<IEpisodes[]>;
+  seasons: IEpisode[];
 }
