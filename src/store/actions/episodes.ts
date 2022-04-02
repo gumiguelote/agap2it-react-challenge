@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { IEpisode } from "../../interface/episodes.interface";
+import { IEpisode } from "../../interface/episode.interface";
 import { AppActions } from "../actions.types";
 import { AppState } from "../configuration.store";
 

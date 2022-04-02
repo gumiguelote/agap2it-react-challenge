@@ -9,5 +9,5 @@ export interface IEpisode {
   airdate: string;
 }
 export interface ISeasonEpisodes {
-  seasons: IEpisode[];
+  seasonsEpisodes: IEpisode[];
 }

@@ -1,4 +1,4 @@
-import { IEpisode } from "../../interface/episodes.interface";
+import { IEpisode } from "../../interface/episode.interface";
 import { LOAD_EPISODES, ShowsActionTypes } from "../actions.types";
 
 const episodesReducerDefaultState: IEpisode[] = [];

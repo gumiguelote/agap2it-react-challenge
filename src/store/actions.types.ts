@@ -1,10 +1,11 @@
 import { IEpisodeDetails } from "../interface/episodeDetails.interface";
-import { IEpisode } from "../interface/episodes.interface";
+import { IEpisode } from "../interface/episode.interface";
 import { IShow } from "../interface/show.interface";
 
 export const LOAD_SHOW = "LOAD_SHOW";
 export const LOAD_EPISODES = "LOAD_EPISODES";
 export const LOAD_EPISODE_DETAILS = "LOAD_EPISODE_DETAILS";
+export const CONTROL_BACKDROP = "CONTROL_BACKDROP";
 
 export interface LoadShowAction {
   type: typeof LOAD_SHOW;
@@ -21,9 +22,15 @@ export interface LoadEpisodeDetailAction {
   episodeDetails: IEpisodeDetails;
 }
 
+export interface ControlBackdropAction {
+  type: typeof CONTROL_BACKDROP;
+  isLoading: boolean;
+}
+
 export type ShowsActionTypes =
   | LoadShowAction
   | LoadEpisodesAction
-  | LoadEpisodeDetailAction;
+  | LoadEpisodeDetailAction
+  | ControlBackdropAction;
 
 export type AppActions = ShowsActionTypes;

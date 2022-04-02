@@ -33,6 +33,8 @@
     "no-param-reassign": "off",
     "no-explicit-any": "off",
     "default-param-last": "off",
+    "no-non-null-assertion": "off",
+    "no-shadow": "off",
     "react/function-component-definition": "off",
     "quotes": [
       "warn",

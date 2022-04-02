@@ -11,23 +11,20 @@ import {
   Link as LinkMaterial,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector } from "../../hooks/useTypeSelector";
 import { removeTagsFromString } from "../../helpers/string.helper";
-import { IEpisodeDetails } from "../../interface/episodeDetails.interface";
 
-interface IEpisodeDetailsProps {
-  episode: IEpisodeDetails;
-}
-
-const EpisodeDetailsCard: React.FC<IEpisodeDetailsProps> = ({ episode }) => {
+const EpisodeDetailsCard: React.FC = () => {
   const isMobile: boolean = useMediaQuery("(max-width:800px)");
+  const { episodeDetails, show } = useSelector((state) => state);
 
   return (
     <>
       <Breadcrumbs sx={{ mb: 2 }} aria-label="breadcrumb">
-        <LinkMaterial underline="hover" color="inherit" href="/">
-          {episode.name}
+        <LinkMaterial underline="hover" color="inherit" component={Link} to="/">
+          {show.name}
         </LinkMaterial>
-        <Typography color="text.primary">{episode.name}</Typography>
+        <Typography color="text.primary">{episodeDetails.name}</Typography>
       </Breadcrumbs>
       <Card
         raised
@@ -45,9 +42,8 @@ const EpisodeDetailsCard: React.FC<IEpisodeDetailsProps> = ({ episode }) => {
         >
           <CardMedia
             component="img"
-            image={episode.image.medium}
-            // ToDo change alt to the name of the episode
-            alt=""
+            image={episodeDetails.image.medium}
+            alt={episodeDetails.name}
             sx={{
               objectFit: "cover",
               maxWidth: isMobile ? null : 500,
@@ -56,23 +52,28 @@ const EpisodeDetailsCard: React.FC<IEpisodeDetailsProps> = ({ episode }) => {
           />
           <CardContent sx={{ flex: "1 0 auto" }}>
             <Typography component="h1" variant="h5">
-              {episode.name}
+              {episodeDetails.name}
             </Typography>
             <Typography
               variant="subtitle2"
               color="text.secondary"
               component="h2"
             >
-              {removeTagsFromString(episode.summary)}
+              {removeTagsFromString(episodeDetails.summary)}
             </Typography>
           </CardContent>
         </Box>
       </Card>
-      <Link style={{ textDecoration: "none" }} to="/">
-        <Button sx={{ mt: 2 }} color="info" size="medium" variant="outlined">
-          Back to List
-        </Button>
-      </Link>
+      <Button
+        sx={{ mt: 2 }}
+        component={Link}
+        to="/"
+        color="info"
+        size="medium"
+        variant="outlined"
+      >
+        Back to List
+      </Button>
     </>
   );
 };
