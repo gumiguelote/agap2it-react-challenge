@@ -11,8 +11,8 @@ const ResizableTableHeader: React.FC<IResizableTableHeader> = ({
   if (isMobile) {
     return (
       <TableRow>
-        <TableCell>Name</TableCell>
-        <TableCell>Action</TableCell>
+        <TableCell>Title</TableCell>
+        <TableCell align="center">Action</TableCell>
       </TableRow>
     );
   }
@@ -20,8 +20,8 @@ const ResizableTableHeader: React.FC<IResizableTableHeader> = ({
     <TableRow>
       <TableCell>Number</TableCell>
       <TableCell>Date</TableCell>
-      <TableCell>Name</TableCell>
-      <TableCell>Action</TableCell>
+      <TableCell>Title</TableCell>
+      <TableCell align="center">Action</TableCell>
     </TableRow>
   );
 };

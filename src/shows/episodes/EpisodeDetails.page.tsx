@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { IEpisodeDetails } from "../../interface/episodeDetails.interface";
+import { useDispatch } from "react-redux";
+import { startLoadEpisodeDetails } from "../../store/actions/episodeDetails";
 import { getEpisodeDetail } from "../../service/endpoints.service";
 import EpisodeDetailsCard from "./EpisodeDetailsCard.component";
-
-// interface IEpisodeDetailssPageProps {}
-
-const initialState: IEpisodeDetails = {
-  name: "",
-  summary: "",
-  image: {
-    medium: "",
-  },
-};
+import { startControlBackdrop } from "../../store/actions/backdropLoading";
 
 const EpisodeDetailsPage: React.FC = () => {
-  const { id } = useParams();
-  const [episode, setEpisode] = useState<IEpisodeDetails>(initialState);
+  const dispatch = useDispatch();
+  const params = useParams();
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const id = params.id!;
 
   useEffect(() => {
     const fetchEpisodeDetails = async (episodeId: string): Promise<void> => {
-      setEpisode(await getEpisodeDetail(episodeId));
+      dispatch(startLoadEpisodeDetails(await getEpisodeDetail(episodeId)));
+      dispatch(startControlBackdrop(false));
     };
-    fetchEpisodeDetails(id?.toString() || "");
+    fetchEpisodeDetails(id);
   }, [id]);
 
-  return <EpisodeDetailsCard episode={episode} />;
+  return <EpisodeDetailsCard />;
 };
 
 export default EpisodeDetailsPage;

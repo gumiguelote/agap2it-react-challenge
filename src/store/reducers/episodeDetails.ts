@@ -16,7 +16,6 @@ const episodeDetailsReducer = (
   switch (action.type) {
     case LOAD_EPISODE_DETAILS:
       return action.episodeDetails;
-      break;
     default:
       return state;
   }

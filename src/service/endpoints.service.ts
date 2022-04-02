@@ -1,5 +1,5 @@
 import { IEpisodeDetails } from "../interface/episodeDetails.interface";
-import { IEpisode } from "../interface/episodes.interface";
+import { IEpisode } from "../interface/episode.interface";
 import { IShow } from "../interface/show.interface";
 import api from "./api.service";
 

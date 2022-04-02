@@ -13,16 +13,19 @@ import {
   Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import ResizableTableHeader from "./EpisodesTableHeaderComponent";
-import { IEpisode, ISeasonEpisodes } from "../../interface/episodes.interface";
+import { useDispatch } from "react-redux";
+import ResizableTableHeader from "./EpisodesTableHeader.component";
+import { IEpisode, ISeasonEpisodes } from "../../interface/episode.interface";
 import { dateFormatToIUHelper } from "../../helpers/date.helper";
+import { startControlBackdrop } from "../../store/actions/backdropLoading";
 
-const ShowEpisodesTable: React.FC<ISeasonEpisodes> = ({ seasons }) => {
+const ShowEpisodesTable: React.FC<ISeasonEpisodes> = ({ seasonsEpisodes }) => {
+  const dispatch = useDispatch();
   const isMobile: boolean = useMediaQuery("(max-width:800px)");
 
   return (
     <Box sx={{ maxHeight: 600, overflow: "overlay" }}>
-      {Object.keys(seasons).map((season) => (
+      {Object.keys(seasonsEpisodes).map((season) => (
         <Box sx={{ mb: 4 }} key={season}>
           <Typography component="h5" variant="h6">
             {`Season ${season}`}
@@ -37,7 +40,7 @@ const ShowEpisodesTable: React.FC<ISeasonEpisodes> = ({ seasons }) => {
                 <ResizableTableHeader isMobile={isMobile} />
               </TableHead>
               <TableBody>
-                {seasons[season]?.map((episode: IEpisode) => (
+                {seasonsEpisodes[season]?.map((episode: IEpisode) => (
                   <TableRow
                     key={episode.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -53,14 +56,16 @@ const ShowEpisodesTable: React.FC<ISeasonEpisodes> = ({ seasons }) => {
                       </>
                     )}
                     <TableCell scope="row">{episode.name}</TableCell>
-                    <TableCell scope="row">
-                      <Button variant="outlined">
-                        <Link
-                          style={{ textDecoration: "none" }}
-                          to={`/${episode.id}/episode`}
-                        >
-                          Details
-                        </Link>
+                    <TableCell scope="row" align="right">
+                      <Button
+                        variant="outlined"
+                        component={Link}
+                        to={`/${episode.id}/episode`}
+                        onClick={() => {
+                          dispatch(startControlBackdrop(true));
+                        }}
+                      >
+                        Details
                       </Button>
                     </TableCell>
                   </TableRow>
