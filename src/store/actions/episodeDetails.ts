@@ -1,7 +1,6 @@
 import { Dispatch } from "react";
 import { IEpisodeDetails } from "../../interface/episodeDetails.interface";
 import { AppActions } from "../actions.types";
-import { AppState } from "../configuration.store";
 
 export const loadEpisodesDetails = (
   episodeDetails: IEpisodeDetails,
@@ -11,7 +10,7 @@ export const loadEpisodesDetails = (
 });
 
 export const startLoadEpisodeDetails = (episodeDetails: IEpisodeDetails) => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>) => {
     dispatch(loadEpisodesDetails(episodeDetails));
   };
 };

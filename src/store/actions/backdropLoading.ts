@@ -1,6 +1,5 @@
 import { Dispatch } from "react";
 import { AppActions } from "../actions.types";
-import { AppState } from "../configuration.store";
 
 export const controlBackdrop = (isLoading: boolean): AppActions => ({
   type: "CONTROL_BACKDROP",
@@ -8,7 +7,7 @@ export const controlBackdrop = (isLoading: boolean): AppActions => ({
 });
 
 export const startControlBackdrop = (isLoading: boolean) => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>) => {
     dispatch(controlBackdrop(isLoading));
   };
 };

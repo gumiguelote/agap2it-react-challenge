@@ -1,7 +1,6 @@
 import { Dispatch } from "react";
 import { IShow } from "../../interface/show.interface";
 import { AppActions } from "../actions.types";
-import { AppState } from "../configuration.store";
 
 export const loadShow = (show: IShow): AppActions => ({
   type: "LOAD_SHOW",
@@ -9,7 +8,7 @@ export const loadShow = (show: IShow): AppActions => ({
 });
 
 export const startLoadShow = (show: IShow) => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>) => {
     dispatch(loadShow(show));
   };
 };

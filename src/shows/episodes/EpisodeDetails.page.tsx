@@ -19,7 +19,7 @@ const EpisodeDetailsPage: React.FC = () => {
       dispatch(startControlBackdrop(false));
     };
     fetchEpisodeDetails(id);
-  }, [id]);
+  }, [id, dispatch]);
 
   return <EpisodeDetailsCard />;
 };
